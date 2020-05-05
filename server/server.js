@@ -32,7 +32,7 @@ app.use(require('./routes/usuario'))
   let conecxion=async ()=>{
 
     try {
-      await mongoose.connect('mongodb://localhost:27017/cafe', {
+      await mongoose.connect(process.env.URLDB, {
         useNewUrlParser: true,
         useUnifiedTopology: true
       });
