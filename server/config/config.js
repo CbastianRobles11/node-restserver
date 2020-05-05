@@ -29,7 +29,8 @@ let urlDB
 // }
 // else{
 
-    urlDB='mongodb+srv://root:Saratoga666@cafe-atvg7.mongodb.net/test?retryWrites=true&w=majority'
+//la variable guardada en heroku config
+    urlDB=process.env.MONGO_URL;
 
 // }
 
