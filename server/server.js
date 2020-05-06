@@ -23,9 +23,10 @@ app.use(bodyParser.json())
 //===================================================================================
 
 ////importamos el app como midelware
-// app.use( require('./routes/usuario'));
+// app.use( require('./routes/index'));
 
-app.use(require('./routes/usuario'))
+//configuracion lobal de rutas
+app.use(require('./routes/index'))
 
 
 //la funcon de conexion a mongo

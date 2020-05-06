@@ -1,7 +1,6 @@
 {
   "name": "07-restserver",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
@@ -10,12 +9,25 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "crypto-js": "^4.0.0",
     "express": "^4.17.1",
-    "mongoose": "^5.9.10",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.12",
     "mongoose-unique-validator": "^2.0.3",
     "node-pre-gyp": "^0.14.0",
+    "nodemon": "^2.0.3",
     "underscore": "^1.10.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CbastianRobles11/node-restserver.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CbastianRobles11/node-restserver/issues"
+  },
+  "homepage": "https://github.com/CbastianRobles11/node-restserver#readme",
+  "description": ""
 }

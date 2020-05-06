@@ -1,4 +1,4 @@
-
+// npm i mongoose
 const mongoose= require('mongoose');
 //mongoes- unique validatos  archivo externo 
 const uniqueValidator=require('mongoose-unique-validator');

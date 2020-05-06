@@ -3,6 +3,11 @@ const express = require('express')
 
 const Usuario = require('../models/usuario')
 
+//verifica el token
+const {verificaToken,verificaAdmin_Role }=require('../middlewares/autenticacion')
+
+const bcrypt = require('bcrypt');
+
 // crypto-js encipta password
 var CryptoJS = require("crypto-js");
 // console.log(CryptoJS.HmacSHA1("Message", "Key"));
@@ -11,7 +16,10 @@ var CryptoJS = require("crypto-js");
 const _=require('underscore')
 
 
-app.get('/usuario', function (req, res) {
+
+
+
+app.get('/usuario', verificaToken ,function (req, res) {
     // //vamos a trabajar con json
     //   res.json('get Usuario')
 
@@ -62,7 +70,7 @@ app.get('/usuario', function (req, res) {
   
   
   //crear nuevos registros
-  app.post('/usuario', function (req, res) {
+  app.post('/usuario',[verificaToken,verificaAdmin_Role], function (req, res) {
   
     ///aki se usa el body
     // el req.body va a parecer cada vez que hagaos una peticion 
@@ -84,7 +92,7 @@ app.get('/usuario', function (req, res) {
     let usuario=new Usuario({
         nombre:body.nombre,
         email:body.email,
-        password:CryptoJS.HmacSHA1("la CLAVE ECRTP",body.password),
+        password:bcrypt.hashSync(body.password,10),
         role:body.role
     });
 
@@ -115,7 +123,7 @@ app.get('/usuario', function (req, res) {
 
   
   //actualizar datos
-  app.put('/usuario/:id', function (req, res) {
+  app.put('/usuario/:id',[verificaToken,verificaAdmin_Role], function (req, res) {
   //agregamos el id de la ruta
       let id=req.params.id;
 
@@ -156,7 +164,7 @@ app.get('/usuario', function (req, res) {
   
     //el delete para borrar registo
   
-app.delete('/usuario/:id', function (req, res) {
+app.delete('/usuario/:id', [verificaToken,verificaAdmin_Role], function (req, res) {
       //vamos a trabajar con json
       // res.json('delete Usuario')
 
