@@ -3,6 +3,9 @@ require('./config/config');
 const express = require('express')
 const app = express()
 
+//para las carpetas
+const path =require('path')
+
 //mongo
 // Using Node.js `require()`
 const mongoose = require('mongoose');
@@ -19,6 +22,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
  
 // parse application/json
 app.use(bodyParser.json())
+
+// habilitar ;a carpeta public public
+app.use(express.static(path.resolve(__dirname,'../public')))
+console.log(path.resolve(__dirname,'../public'))
+
+
 
 //===================================================================================
 

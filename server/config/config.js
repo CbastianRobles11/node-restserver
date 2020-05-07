@@ -53,3 +53,9 @@ else{
 
 
 process.env.URLDB=urlDB
+
+//=========================================================
+//Google Client
+//=====================================================
+process.env.CLIENT_ID=process.env.CLIENT_ID || '58891088151-53u8gi26kflgdaeacnekf2unek5guoje.apps.googleusercontent.com';
+
