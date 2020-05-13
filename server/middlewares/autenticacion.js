@@ -6,7 +6,8 @@ const jwt=require('jsonwebtoken');
 
 //next continuara con la ejecucuon del programa
 let verificaToken=(req,res,next)=>{
-    //leer los headers
+    //leer los headers del postman con get
+    
     let token=req.get('token');
 
     jwt.verify(token, process.env.SEED ,(err,decoded)=>{
@@ -20,8 +21,11 @@ let verificaToken=(req,res,next)=>{
             })
         }
 
+        // decoded usuario = dento del obheto que encripte se que viene usuario , seria el payload
         req.usuario=decoded.usuario;
         //para que continue el programa
+        
+        
         next();
     })
     //solo pra probar
@@ -36,7 +40,7 @@ let verificaToken=(req,res,next)=>{
 //=================================
 
 let verificaAdmin_Role=(req,res,next)=>{
-    
+    //recupero el req.usuario de la anterior funcion
     let usuario=req.usuario
 
     if(usuario.role=='ADMIN_ROLE'){

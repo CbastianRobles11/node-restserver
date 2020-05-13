@@ -53,9 +53,7 @@ app.get('/usuario', verificaToken ,function (req, res) {
                 }
 
                 // numero de registros
-                Usuario.count({estado:true},(err,conteo)=>{
-                    
-                    
+                Usuario.count({estado:true},(err,conteo)=>{   
                     res.json({
                         ok:true,
                         usuarios,
