@@ -91,7 +91,8 @@ app.get('/usuario', verificaToken ,function (req, res) {
         nombre:body.nombre,
         email:body.email,
         password:bcrypt.hashSync(body.password,10),
-        role:body.role
+        role:body.role,
+        img:body.img
     });
 
     //gurdar en la bbd

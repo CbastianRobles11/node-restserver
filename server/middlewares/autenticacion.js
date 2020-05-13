@@ -58,8 +58,41 @@ let verificaAdmin_Role=(req,res,next)=>{
 
 }
 
+// =========================
+//Verifica token para img
+// =======================
+let VerificaTokenImg=(req,res,next)=>{
+    //
+    let token=req.query.token;
+    jwt.verify(token, process.env.SEED ,(err,decoded)=>{
+        if(err){
+            
+            res.status(401).json({
+                ok:false,
+                err:{
+                    message:'Token no valido'
+                }
+            })
+        }
+
+        // decoded usuario = dento del obheto que encripte se que viene usuario , seria el payload
+        req.usuario=decoded.usuario;
+        //para que continue el programa
+        
+        
+        next();
+    })
+
+    // res.json({
+    //     token:token
+    // })
+}
+
+
+
 module.exports={
     verificaToken,
-    verificaAdmin_Role
+    verificaAdmin_Role,
+    VerificaTokenImg
 
 }
